@@ -56,7 +56,10 @@ doubt, please contact the Seattle development team at
 and supply all of the above information. Thank you!
 
 """
-    sys.exit(1)
+    if len(sys.argv) == 2 and sys.argv[1] == '-s':
+      continue
+    else:
+      sys.exit(1)
 
 
 # If there is a readme file, show it to the user. 
