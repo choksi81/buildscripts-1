@@ -49,15 +49,15 @@ for line in config_file.readlines():
   # Git prints all status messages to stderr (!). We check its retval 
   # to see if it performed correctly, and halt the program (giving debug 
   # output) if not.
-  if skip == 0:
-    if git_process.returncode == 0:
-      print "Done!"
-    else:
+  if git_process.returncode == 0:
+    print "Done!"
+  else:
       print "*** Error checking out repo. Git returned status code", git_process.returncode
       print "*** Git messages on stdout: '" + stdout_data + "'."
       print "*** Git messages on stderr: '" + stderr_data + "'."
       print
-      print """These errors need to be fixed before the build process can proceed. In 
+      if skip == 0:
+        print """Since the skip-mode is off, these errors need to be fixed before the build process can proceed. In 
 doubt, please contact the Seattle development team at 
 
    seattle-devel@googlegroups.com
@@ -65,17 +65,12 @@ doubt, please contact the Seattle development team at
 and supply all of the above information. Thank you!
 
 """
-      sys.exit(1)
-  else:
-    if git_process.returncode == 0:
-      print "Done!"
-    else:
-      print "*** Error checking out repo. Git returned status code", git_process.returncode
-      print "*** Git messages on stdout: '" + stdout_data + "'."
-      print "*** Git messages on stderr: '" + stderr_data + "'."
-      print "Continuing with the cloning of directories as skip-mode is active"
-      print
-      continue
+        print
+        sys.exit(1)
+      else:
+        print "Continuing with the cloning of directories as skip-mode is active"
+        print
+        continue
 
 # If there is a readme file, show it to the user. 
 try:
