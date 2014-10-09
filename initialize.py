@@ -13,6 +13,7 @@
   * Run this script: 
       ``python initialize.py'' or "python initialize.py -s"
         where -s activates skip-mode
+  * If Skip-mode is activated then 'initialize' would continue cloning of repos even on encountering git-errors    
       
   * The dependencies will be checked out into ``../DEPENDENCIES''.
 
