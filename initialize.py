@@ -31,9 +31,9 @@ config_file = open("config_initialize.txt")
 
 
 if len(sys.argv) == 2 and sys.argv[1] == '-s':
-  skip=1
+  ignore_git_errors=True
 else:
-  skip=0
+  ignore_git_errors=False
 
 for line in config_file.readlines():
   # Ignore comments and blank lines
@@ -56,7 +56,7 @@ for line in config_file.readlines():
       print "*** Git messages on stdout: '" + stdout_data + "'."
       print "*** Git messages on stderr: '" + stderr_data + "'."
       print
-      if skip == 0:
+      if not ignore_git_errors:
         print """Since the skip-mode is off, these errors need to be fixed before the build process can proceed. In 
 doubt, please contact the Seattle development team at 
 
