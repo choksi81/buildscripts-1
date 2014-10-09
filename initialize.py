@@ -31,9 +31,9 @@ config_file = open("config_initialize.txt")
 
 
 if len(sys.argv) == 2 and sys.argv[1] == '-s':
-  ignore_git_errors=True
+  ignore_git_errors = True
 else:
-  ignore_git_errors=False
+  ignore_git_errors = False
 
 for line in config_file.readlines():
   # Ignore comments and blank lines
