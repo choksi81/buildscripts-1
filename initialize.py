@@ -76,9 +76,6 @@ and supply all of the above information. Thank you!
       print "Continuing with the cloning of directories as skip-mode is active"
       print
       continue
-  #if skip == 1:
-   #     continue
-    #  else:
 
 # If there is a readme file, show it to the user. 
 try:
